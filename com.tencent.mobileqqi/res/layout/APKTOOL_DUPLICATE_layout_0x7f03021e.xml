@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a1c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="82.0dip">
+        <RelativeLayout android:id="@id/qzone_feed_entry" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020148" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="点击进入好友动态">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205b5" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024c" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d2" android:layout_marginTop="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0e98" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024d" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d3" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024a" />
+            <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205ca" android:padding="1.0dip" android:visibility="gone" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f8" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0808d1" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020148" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="点击进入附近的人列表界面">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d6" android:background="@drawable/qq_leba_list_seek_neighbour" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024c" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d7" android:layout_marginTop="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0f58" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808d6" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024d" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d8" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0808d6" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0808d6" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024a" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808d9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020148" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="点击进入兴趣部落界面">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808da" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ba" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024c" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808db" android:layout_marginTop="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0f03" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808da" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024d" />
+            <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808dc" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b011c" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0808da" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0808da" style="@style/APKTOOL_DUPLICATE_style_0x7f0e024a" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020a76" android:layout_width="fill_parent" android:layout_height="2.0px" />
+</LinearLayout>

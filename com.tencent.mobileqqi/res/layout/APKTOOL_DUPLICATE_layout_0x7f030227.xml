@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808f8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205bd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808f9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205c2" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808f7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="40.0dip" android:text="一条为接听电话一条为接接听电话接听电话听电话一条为接听电话一条为接听电话" android:maxLines="10" />
+</LinearLayout>

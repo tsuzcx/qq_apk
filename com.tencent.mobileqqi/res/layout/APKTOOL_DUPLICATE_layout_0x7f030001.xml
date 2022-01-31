@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.internal.widget.ActionBarContainer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800ce" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?attr/actionBarStyle">
+        <android.support.v7.internal.widget.ActionBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800cf" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?attr/actionBarStyle" />
+        <android.support.v7.internal.widget.ActionBarContextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?attr/actionModeStyle" />
+    </android.support.v7.internal.widget.ActionBarContainer>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080015" android:layout_width="fill_parent" android:layout_height="0.0dip" android:foreground="?android:windowContentOverlay" android:layout_weight="1.0" android:foregroundGravity="fill_horizontal|center|top" />
+    <android.support.v7.internal.widget.ActionBarContainer android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?attr/actionBarSplitStyle" />
+</merge>

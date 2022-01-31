@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080a4c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0803c8" />
+    <Button android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00fb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0803c8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02065b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0dbc" android:layout_alignParentBottom="true" />
+</RelativeLayout>

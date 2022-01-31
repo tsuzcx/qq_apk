@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b01" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02074e" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginLeft="9.0dip" android:layout_marginBottom="18.0dip" android:layout_alignParentBottom="true" />
+    <com.qzone.widget.AvatarImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b02" android:background="@null" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginLeft="11.0dip" android:layout_marginBottom="20.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f8" android:scaleType="fitCenter" android:layout_alignParentBottom="true" qzone:avatarSize="70.0dip" />
+</RelativeLayout>

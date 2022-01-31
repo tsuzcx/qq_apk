@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002c">
+        <item>中國 86 11 最常選擇的國家地區</item>
+        <item>澳門（中國） 853 8 最常選擇的國家地區</item>
+        <item>香港（中國） 852 8 最常選擇的國家地區</item>
+        <item>臺灣（中國） 886 10 最常選擇的國家地區</item>
+        <item>美國 1 10 最常選擇的國家地區</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
+        <item>最常選擇的國家地區</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002e">
+        <item>阿爾巴尼亞 355 7 A</item>
+        <item>阿爾及利亞 213 6 A</item>
+        <item>阿富汗 93 6 A</item>
+        <item>阿根廷 54 7 A</item>
+        <item>阿聯酋 971 11 A</item>
+        <item>阿魯巴島 297 7 A</item>
+        <item>阿曼 968 0 A</item>
+        <item>阿塞拜疆 994 9 A</item>
+        <item>阿森松島 247 4 A</item>
+        <item>埃及 20 8 A</item>
+        <item>埃塞俄比亞 251 7 A</item>
+        <item>愛爾蘭 353 9 A</item>
+        <item>愛沙尼亞 372 7|8 A</item>
+        <item>安道爾共和國 376 6 A</item>
+        <item>安哥拉 244 6 A</item>
+        <item>安圭拉 1264 7 A</item>
+        <item>安提瓜和巴布達 1268 7 A</item>
+        <item>奧地利 43 8 A</item>
+        <item>澳大利亞 61 10 A</item>
+        <item>澳門（中國） 853 8 A</item>
+        <item>巴巴多斯 1246 7 B</item>
+        <item>巴布亞新幾內亞 675 7 B</item>
+        <item>巴哈馬群島 1242 7 B</item>
+        <item>巴基斯坦 92 11 B</item>
+        <item>巴拉圭 595 0 B</item>
+        <item>巴林島 973 8 B</item>
+        <item>巴拿馬 507 7 B</item>
+        <item>巴西 55 8 B</item>
+        <item>白俄羅斯 375 9 B</item>
+        <item>百慕大 1441 7 B</item>
+        <item>保加利亞 359 7 B</item>
+        <item>貝寧 229 8 B</item>
+        <item>比利時 32 8 B</item>
+        <item>冰島 354 7 B</item>
+        <item>波多黎各 1787 7 B</item>
+        <item>波蘭 48 10 B</item>
+        <item>波斯尼亞和黑塞哥維那 387 0 B</item>
+        <item>玻利維亞 591 7 B</item>
+        <item>伯利茲 501 7 B</item>
+        <item>博茨瓦納 267 7 B</item>
+        <item>不丹 975 5 B</item>
+        <item>布基納法索 226 6 B</item>
+        <item>布隆迪 257 8 B</item>
+        <item>赤道幾內亞 240 0 C</item>
+        <item>丹麥 45 8 D</item>
+        <item>德國 49 11 D</item>
+        <item>東帝汶 670 0 D</item>
+        <item>東薩摩亞（美國） 1684 7 D</item>
+        <item>多哥 228 7 D</item>
+        <item>多明尼加共和國 1890 7 D</item>
+        <item>俄羅斯 7 10 E</item>
+        <item>厄瓜多爾 593 7 E</item>
+        <item>厄立特里亞 291 0 E</item>
+        <item>法國 33 10 F</item>
+        <item>法羅群島 298 0 F</item>
+        <item>法屬波利尼西亞 689 6 F</item>
+        <item>法屬圭亞那 594 10 F</item>
+        <item>梵蒂岡 39 0 F</item>
+        <item>菲律賓 63 11 F</item>
+        <item>斐濟 679 7 F</item>
+        <item>芬蘭 358 7 F</item>
+        <item>佛得角 238 0 F</item>
+        <item>岡比亞 220 7 G</item>
+        <item>剛果 242 7 G</item>
+        <item>哥倫比亞 57 10 G</item>
+        <item>哥斯達黎加 506 8 G</item>
+        <item>格林納達 1473 7 G</item>
+        <item>格陵蘭 299 0 G</item>
+        <item>格魯吉亞 995 8 G</item>
+        <item>古巴 53 7 G</item>
+        <item>關島 1671 7 G</item>
+        <item>圭亞那 592 12 G</item>
+        <item>哈薩克斯坦 7 10 H</item>
+        <item>海地 509 8 H</item>
+        <item>韓國 82 11 H</item>
+        <item>荷蘭 31 9 H</item>
+        <item>黑山共和國 382 0 H</item>
+        <item>洪都拉斯 504 7 H</item>
+        <item>基里巴斯 686 0 J</item>
+        <item>吉布提 253 6 J</item>
+        <item>吉爾吉斯斯坦 996 9 J</item>
+        <item>幾內亞 224 6 J</item>
+        <item>幾內亞比紹 245 0 J</item>
+        <item>加拿大 1 7 J</item>
+        <item>加納 233 10 J</item>
+        <item>加蓬 241 6 J</item>
+        <item>柬埔寨 855 9 J</item>
+        <item>捷克共和國 420 9 J</item>
+        <item>津巴布韋 263 9 J</item>
+        <item>喀麥隆 237 8 K</item>
+        <item>卡塔爾 974 7 K</item>
+        <item>開曼群島 1345 7 K</item>
+        <item>科摩羅 269 0 K</item>
+        <item>科威特 965 8 K</item>
+        <item>克羅地亞 385 0 K</item>
+        <item>肯尼亞 254 7 K</item>
+        <item>庫克群島 682 5 K</item>
+        <item>拉脫維亞 371 8 L</item>
+        <item>萊索托 266 8 L</item>
+        <item>老撾 856 10 L</item>
+        <item>黎巴嫩 961 7 L</item>
+        <item>立陶宛 370 5 L</item>
+        <item>利比里亞 231 7|8 L</item>
+        <item>利比亞 218 10 L</item>
+        <item>列支敦士登 423 7 L</item>
+        <item>留尼旺島 262 6 L</item>
+        <item>盧森堡 352 9 L</item>
+        <item>盧旺達 250 0 L</item>
+        <item>羅馬尼亞 40 9 L</item>
+        <item>馬達加斯加 261 7 M</item>
+        <item>馬恩島 44 0 M</item>
+        <item>馬耳他 356 8 M</item>
+        <item>馬爾代夫 960 7 M</item>
+        <item>馬拉維 265 9 M</item>
+        <item>馬來西亞 60 10 M</item>
+        <item>馬里 223 8 M</item>
+        <item>馬里亞納群島 596 10 M</item>
+        <item>馬其頓 389 0 M</item>
+        <item>馬紹爾群島 692 0 M</item>
+        <item>馬提尼克 596 10 M</item>
+        <item>馬約特島 262 0 M</item>
+        <item>毛里求斯 230 7 M</item>
+        <item>毛里塔尼亞 222 0 M</item>
+        <item>美國 1 10 M</item>
+        <item>蒙古國 976 0 M</item>
+        <item>孟加拉國 880 7 M</item>
+        <item>秘魯 51 0 M</item>
+        <item>密克羅尼西亞 691 0 M</item>
+        <item>緬甸 95 6 M</item>
+        <item>摩爾多瓦 373 5 M</item>
+        <item>摩洛哥 212 0 M</item>
+        <item>摩納哥 377 8 M</item>
+        <item>莫桑比克 258 9 M</item>
+        <item>墨西哥 52 8 M</item>
+        <item>納米比亞 264 0 N</item>
+        <item>南非 27 6 N</item>
+        <item>南極洲 672 0 N</item>
+        <item>瑙魯 674 9 N</item>
+        <item>尼泊爾 977 9 N</item>
+        <item>尼加拉瓜 505 0 N</item>
+        <item>尼日爾 227 7 N</item>
+        <item>尼日利亞 234 11 N</item>
+        <item>紐埃 683 0 N</item>
+        <item>挪威 47 8 N</item>
+        <item>帕勞 680 0 P</item>
+        <item>皮特凱恩 870 0 P</item>
+        <item>葡萄牙 351 9 P</item>
+        <item>日本 81 11 R</item>
+        <item>瑞典 46 6 R</item>
+        <item>瑞士 41 10 R</item>
+        <item>薩爾瓦多 503 7 S</item>
+        <item>塞爾維亞 381 0 S</item>
+        <item>塞拉利昂 232 6 S</item>
+        <item>塞內加爾 221 7 S</item>
+        <item>塞浦路斯 357 6 S</item>
+        <item>塞舌爾 248 6 S</item>
+        <item>沙特阿拉伯 966 10 S</item>
+        <item>聖多美和普林西比 239 6 S</item>
+        <item>聖盧西亞 1758 7 S</item>
+        <item>聖馬力諾 378 10 S</item>
+        <item>聖文森特 1784 7 S</item>
+        <item>史瓦濟蘭 268 7 S</item>
+        <item>斯里蘭卡 94 7|8 S</item>
+        <item>斯洛伐克 421 7 S</item>
+        <item>斯洛文尼亞 386 7 S</item>
+        <item>蘇丹 249 9 S</item>
+        <item>蘇里南 597 6 S</item>
+        <item>索羅門群島 677 7 S</item>
+        <item>索馬里 252 7 S</item>
+        <item>塔吉克斯坦 992 6 T</item>
+        <item>台灣 886 10 T</item>
+        <item>泰國 66 10 T</item>
+        <item>坦桑尼亞 255 11 T</item>
+        <item>湯加 676 7 T</item>
+        <item>特里尼達和多巴哥 1868 7 T</item>
+        <item>突尼斯 216 8 T</item>
+        <item>圖瓦盧 688 0 T</item>
+        <item>土耳其 90 10 T</item>
+        <item>土庫曼斯坦 993 6 T</item>
+        <item>托克勞 690 0 T</item>
+        <item>瓦利斯群島和富圖納群島 681 0 W</item>
+        <item>瓦努阿圖 678 0 W</item>
+        <item>危地馬拉 502 8 W</item>
+        <item>委內瑞拉 58 7 W</item>
+        <item>文萊 673 7 W</item>
+        <item>烏干達 256 9 W</item>
+        <item>烏克蘭 380 10 W</item>
+        <item>烏拉圭 598 7 W</item>
+        <item>烏茲別克斯坦 998 7 W</item>
+        <item>西班牙 34 9 X</item>
+        <item>西薩摩亞 685 7 X</item>
+        <item>希臘 30 10 X</item>
+        <item>香港（中國） 852 8 X</item>
+        <item>象牙海岸 225 8 X</item>
+        <item>新加坡 65 8 X</item>
+        <item>新喀裡多尼亞 687 0 X</item>
+        <item>新西蘭 64 8 X</item>
+        <item>匈牙利 36 9 X</item>
+        <item>敘利亞 963 9 X</item>
+        <item>牙買加 1876 7 Y</item>
+        <item>亞美尼亞 374 8 Y</item>
+        <item>也門 967 6 Y</item>
+        <item>伊拉克 964 8 Y</item>
+        <item>伊朗 98 8 Y</item>
+        <item>以色列 972 9 Y</item>
+        <item>意大利 39 10 Y</item>
+        <item>印度 91 10 Y</item>
+        <item>印尼 62 10|11|12 Y</item>
+        <item>英國 44 10 Y</item>
+        <item>約旦 962 7 Y</item>
+        <item>越南 84 10 Y</item>
+        <item>贊比亞 260 9 Z</item>
+        <item>扎伊爾 243 7 Z</item>
+        <item>乍得 235 7 Z</item>
+        <item>直布羅陀 350 8 Z</item>
+        <item>智利 56 7 Z</item>
+        <item>中非共和國 236 6 Z</item>
+        <item>中國 86 11 Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002f">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0031">
+        <item>月點擊超千萬次神作：羅布泊之咒</item>
+        <item>小時代三部曲完結篇：刺金時代</item>
+        <item>盜獵者的詭異經歷：鬼藏人</item>
+        <item>比外星美男叫獸更具魅力的男主</item>
+        <item>獨家推薦：宅鬥版後宮《甄嬛傳》</item>
+        <item>治癒系：溫暖寫手葉非夜新書來襲</item>
+        <item>臥底女警行動時神秘失聯</item>
+        <item>幽靈詛咒！死亡校舍排行</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0032">
+        <item>作者：周德東</item>
+        <item>作者：郭敬明</item>
+        <item>作者：李達</item>
+        <item>尋找屬於你的“都敏俊”</item>
+        <item>不要小看女人</item>
+        <item>男神不要太多哦</item>
+        <item>女警神秘失聯</item>
+        <item>死亡宿舍推薦</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0033">
+        <item>中國恐怖小說第一人周德東百萬字巨著火熱連載中，騰訊獨家首發，本書集青春、愛情、懸疑、探險、魔幻於一體，共1001次高潮。邀您一起踏上驚心動魄的“羅布泊之旅”！</item>
+        <item>林蕭、顧裡、南湘、唐宛如四位主角的故事，畫上出乎意料同時又無可辯駁的句號。郭敬明導演同名電影《小時代》最後一部2014年7月上映。前兩季交錯鋪設下的伏筆，將在本季密集引爆。</item>
+        <item>30年前，一支由“死人”組建的勘探隊進入殺龍嶺，中國隱藏了數千年的終極秘密首次拉開大幕：莽莽叢林背後，究竟隱藏了什麼秘密？“一切動物都指向那個終極——天黑莫上山，夜半鬼藏人……</item>
+        <item>此男主，前無古人後無來者，時有怪癖，卻極富魅力，追其原因：多金、帥氣、人間難遇！要如何把土豪變成自己的？攻略在此，不看後悔哦~</item>
+        <item>伯父冷漠，未婚夫背叛，視若親母的伯母二十萬兩銀子將她賣為商人妾，徹底斷送了她的一生。重生歸來，她決心報仇，那些踐踏她的人，她必以牙還牙，加倍奉還！</item>
+        <item>“男神大人，小女子有罪，對您有跟蹤罪，窺視罪，夢中情人罪……”林深深對著面前冷若冰霜的美男子——錦洋嘴裡謝罪，腦內YY，心裡大恨：老娘閱男無數，居然栽了！</item>
+        <item>王牌臥底執行公務時突然失聯，神秘失蹤。她到底遭遇何事，現又身在何處？</item>
+        <item>為尋找失蹤的姐姐，她考入姐姐之前的同一所大學。入校當天天，一連串離奇事件就在宿舍接連上演，姐姐的失蹤是否與這些有關？事件背後的真相到底是……</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0034">
+        <item>熱門書籍</item>
+        <item>熱門書籍</item>
+        <item>熱門書籍</item>
+        <item>熱門書籍</item>
+        <item>熱門書籍</item>
+        <item>大神推薦</item>
+        <item>熱門書籍</item>
+        <item>熱門書籍</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0038">
+        <item>大圖瀏覽</item>
+        <item>WiFi環境下，大圖瀏覽更贊！</item>
+        <item>開啟</item>
+        <item>不再提醒</item>
+    </string-array>
+</resources>

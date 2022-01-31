@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://pub.idqqimg.com/qqmpmobile/gdt/css/index.css?_bid=156"></link>
+</head>
+<body>
+    <div id="container">
+        <div id="struct1">
+            <img id="struct1_img">
+            <div id="ad_origin">
+                <span>腾讯效果广告 ⓘ&nbsp;</span>
+            </div>
+        </div>
+
+        <div id="struct2">
+            <div id="struct2-inner">
+                <h3>腾讯效果广告</h3>
+                <div>
+                    <a id="struct2_1" href="javascript:;">
+                        <div id="struct2_1_text" class="text"></div>
+                        <img id="struct2_1_img">
+                    </a>
+                    <a id="struct2_2" href="javascript:;">
+                        <div id="struct2_2_text" class="text"></div>
+                        <img id="struct2_2_img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    // badjs 上报
+    function bad(msg,url,line){
+        var BAD_REPORT_URL = 'http://badjs.qq.com/cgi-bin/js_report?bid=262&level=4&msg='; //badjs上报
+        var m = [
+              msg,
+              url,
+              line,
+              navigator.userAgent,
+              +new Date
+        ];
+
+        var url = BAD_REPORT_URL + m.join('|_|') ;
+
+        Q.send(url)
+    }
+
+    window.onerror=function(msg, url, line){
+        bad(msg, url, line);
+    };
+    </script>
+    <script type="text/javascript" src="http://pub.idqqimg.com/qqmobile/qqapi.js?_bid=152"></script>
+    <script type="text/javascript" src="http://pub.idqqimg.com/qqmpmobile/gdt/js/index.js?_bid=156"></script>
+</body>
+</html>

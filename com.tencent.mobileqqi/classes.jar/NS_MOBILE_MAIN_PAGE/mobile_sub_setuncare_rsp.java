@@ -1,0 +1,38 @@
+package NS_MOBILE_MAIN_PAGE;
+
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+
+public final class mobile_sub_setuncare_rsp
+  extends JceStruct
+{
+  public int carestatus = 0;
+  public int ret = 0;
+  
+  public mobile_sub_setuncare_rsp() {}
+  
+  public mobile_sub_setuncare_rsp(int paramInt1, int paramInt2)
+  {
+    this.ret = paramInt1;
+    this.carestatus = paramInt2;
+  }
+  
+  public void readFrom(JceInputStream paramJceInputStream)
+  {
+    this.ret = paramJceInputStream.read(this.ret, 0, false);
+    this.carestatus = paramJceInputStream.read(this.carestatus, 1, false);
+  }
+  
+  public void writeTo(JceOutputStream paramJceOutputStream)
+  {
+    paramJceOutputStream.write(this.ret, 0);
+    paramJceOutputStream.write(this.carestatus, 1);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+ * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_setuncare_rsp
+ * JD-Core Version:    0.7.0.1
+ */

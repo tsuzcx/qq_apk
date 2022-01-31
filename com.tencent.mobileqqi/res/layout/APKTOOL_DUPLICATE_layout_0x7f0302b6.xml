@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00c3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="27.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00aa" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b54" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0527" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+    <com.qzone.widget.ExtendGridView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b55" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="15.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:horizontalSpacing="11.0dip" android:verticalSpacing="11.0dip" android:stretchMode="columnWidth" android:numColumns="3" qzone:stretchable="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b56" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00c1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f080b57" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a00c2" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="15.0dip" />
+</LinearLayout>

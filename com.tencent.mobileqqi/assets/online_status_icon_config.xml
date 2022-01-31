@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+    <value termType="69130" name="TERM_TYPE_TV_QQ" icon="default" />
+    <value termType="69378" name="TERM_TYPE_AOL_SQQ" icon="2" />
+    <value termType="69634" name="TERM_TYPE_MISRO_MSG" icon="2" />
+    <value termType="68104" name="TERM_TYPE_ANDROID_PAD" icon="2" />
+    <value termType="65793" name="TERM_TYPE_MOBILE_PC" icon="1" />
+    <value termType="65794" name="TERM_TYPE_MOBILE_OTHER" icon="2" />
+    <value termType="65795" name="TERM_TYPE_MC_3G" icon="2" />
+    <value termType="65799" name="TERM_TYPE_MOBILE_ANDROID" icon="2" />
+    <value termType="73474" name="TERM_TYPE_AOL_HUIYUAN" icon="2" />
+    <value termType="73730" name="TERM_TYPE_AOL_CHAOJIHUIYUAN" icon="2" />
+    <value termType="68361" name="TERM_TYPE_MOBILE_IPAD" icon="3" />
+    <value termType="65804" name="TERM_TYPE_WINPHONE" icon="2" />
+    <value termType="65805" name="TERM_TYPE_MOBILE_HD" icon="2" />
+    <value termType="67586" name="TERM_TYPE_MOBILE_IPHONE" icon="3" />
+    <value termType="69899" name="TERM_TYPE_WIN8" icon="default" />
+    <value termType="71170" name="TERM_TYPE_QQ_SERVICE" icon="2" />
+    <value termType="70922" name="TERM_TYPE_QQ_FORELDER" icon="default" />
+    <value termType="66561" name="TERM_TYPE_HRTX_PC" icon="1" />
+    <value termType="66566" name="TERM_TYPE_HRTX_IPHONE" icon="3" />
+    <value termType="71426" name="TERM_TYPE_MOBILE_HD_NEW" icon="2" />
+    <value termType="72194" name="TERM_TYPE_MOBILE_IPAD_NEW" icon="3" />
+    <value termType="72450" name="TERM_TYPE_MOBILE_ANDROID_NEW" icon="2" />
+    <value termType="72706" name="TERM_TYPE_MOBILE_WINPHONE_NEW" icon="2" />
+</config>

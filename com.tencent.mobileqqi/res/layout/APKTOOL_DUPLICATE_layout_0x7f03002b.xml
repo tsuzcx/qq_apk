@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016a" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04c8" android:layout_alignParentLeft="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00af" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016b" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04c9" android:drawablePadding="7.0dip" android:layout_alignParentRight="true" android:contentDescription="查看更多可能认识的人" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00b0" />
+    </RelativeLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020268" android:scaleType="fitXY" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020269" android:layout_centerVertical="true" />
+        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d04ca" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f08016d" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0095" />
+    </RelativeLayout>
+    <GridView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08016f" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:horizontalSpacing="15.0dip" android:verticalSpacing="10.0dip" android:stretchMode="columnWidth" android:numColumns="4" />
+</LinearLayout>

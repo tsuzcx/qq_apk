@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02015a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806e5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806e6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ef" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.troop.widget.DrawableCenterTextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0078" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080100" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020398" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d08ef" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203ad" android:drawablePadding="3.0dip" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f030150" />
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080770" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080771" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a007b" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+        <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0203d1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</LinearLayout>

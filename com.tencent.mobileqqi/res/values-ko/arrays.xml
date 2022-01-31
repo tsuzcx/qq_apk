@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002c">
+        <item>중국 86 11 대부분의-경우-일부-국가</item>
+        <item>마카오（중국） 853 8 대부분의-경우-일부-국가</item>
+        <item>홍콩（중국） 852 8 대부분의-경우-일부-국가</item>
+        <item>대만（중국） 886 10 대부분의-경우-일부-국가</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
+        <item>대부분의-경우-일부-국가</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002e">
+        <item>가나 233 10 ㄱ</item>
+        <item>가봉 241 6 ㄱ</item>
+        <item>가이아나 592 12 ㄱ</item>
+        <item>감비아 220 7 ㄱ</item>
+        <item>과테말라 502 8 ㄱ</item>
+        <item>괌 1671 7 ㄱ</item>
+        <item>그레나다 1473 7 ㄱ</item>
+        <item>그리스 30 10 ㄱ</item>
+        <item>그린란드 299 0 ㄱ</item>
+        <item>기니 224 6 ㄱ</item>
+        <item>기니비사우 245 0 ㄱ</item>
+        <item>나미비아 264 0 ㄴ</item>
+        <item>나우루어 674 9 ㄴ</item>
+        <item>나이지리아 234 11 ㄴ</item>
+        <item>남극-대륙 672 0 ㄴ</item>
+        <item>남아프리카-공화국 27 6 ㄴ</item>
+        <item>네덜란드 31 9 ㄴ</item>
+        <item>네팔 977 9 ㄴ</item>
+        <item>노르웨이 47 8 ㄴ</item>
+        <item>뉴-칼레도니아(New-Caledonia) 687 0 ㄴ</item>
+        <item>뉴질랜드 64 8 ㄴ</item>
+        <item>니우에 683 0 ㄴ</item>
+        <item>니제르 227 7 ㄴ</item>
+        <item>니카라과 505 0 ㄴ</item>
+        <item>대만(중국) 886 10 ㄷ</item>
+        <item>대한민국 82 11 ㄷ</item>
+        <item>덴마크 45 8 ㄷ</item>
+        <item>도미니카-공화국 1890 7 ㄷ</item>
+        <item>독일 49 11 ㄷ</item>
+        <item>동-티모르 670 0 ㄷ</item>
+        <item>동사모아(미국령) 1684 7 ㄷ</item>
+        <item>라오스 856 10 ㄹ</item>
+        <item>라이베리아 231 7|8 ㄹ</item>
+        <item>라트비아 371 8 ㄹ</item>
+        <item>러시아 7 10 ㄹ</item>
+        <item>레바논 961 7 ㄹ</item>
+        <item>레소토 266 8 ㄹ</item>
+        <item>레위니옹 262 0 ㄹ</item>
+        <item>루마니아 40 9 ㄹ</item>
+        <item>룩셈부르크 352 9 ㄹ</item>
+        <item>르완다 250 0 ㄹ</item>
+        <item>리비아 218 10 ㄹ</item>
+        <item>리투아니아 370 5 ㄹ</item>
+        <item>리히텐슈타인 423 7 ㄹ</item>
+        <item>마다가스카르 261 7 ㅁ</item>
+        <item>마르티니크 596 10 ㅁ</item>
+        <item>마리아나-제도 596 10 ㅁ</item>
+        <item>마샬-군도 692 0 ㅁ</item>
+        <item>마요트 262 6 ㅁ</item>
+        <item>마이크로-네시아 691 0 ㅁ</item>
+        <item>마카오(중국) 853 8 ㅁ</item>
+        <item>마케도니아 389 0 ㅁ</item>
+        <item>말라위 265 9 ㅁ</item>
+        <item>말레이시아 60 10 ㅁ</item>
+        <item>말리 223 8 ㅁ</item>
+        <item>멕시코 52 8 ㅁ</item>
+        <item>모나코 377 8 ㅁ</item>
+        <item>모로코 212 0 ㅁ</item>
+        <item>모리셔스 230 7 ㅁ</item>
+        <item>모리타니 222 0 ㅁ</item>
+        <item>모잠비크 258 9 ㅁ</item>
+        <item>몬테네그로 382 0 ㅁ</item>
+        <item>몰도바 373 5 ㅁ</item>
+        <item>몰디브 960 7 ㅁ</item>
+        <item>몰타 356 8 ㅁ</item>
+        <item>몽골 976 0 ㅁ</item>
+        <item>미국 1 10 ㅁ</item>
+        <item>미얀마 95 6 ㅁ</item>
+        <item>바누아투 678 0 ㅂ</item>
+        <item>바레인 973 8 ㅂ</item>
+        <item>바베이도스 1246 7 ㅂ</item>
+        <item>바티칸 39 10 ㅂ</item>
+        <item>바하마 1242 7 ㅂ</item>
+        <item>방글라데시 880 7 ㅂ</item>
+        <item>버뮤다 1441 7 ㅂ</item>
+        <item>베냉 229 8 ㅂ</item>
+        <item>베네수엘라 58 7 ㅂ</item>
+        <item>베트남 84 10 ㅂ</item>
+        <item>벨기에 32 8 ㅂ</item>
+        <item>벨로루시 375 9 ㅂ</item>
+        <item>벨리즈 501 7 ㅂ</item>
+        <item>보스니아-헤르체고비나 387 0 ㅂ</item>
+        <item>보츠와나 267 7 ㅂ</item>
+        <item>볼리비아 591 7 ㅂ</item>
+        <item>부룬디 257 8 ㅂ</item>
+        <item>부르키나파소 226 6 ㅂ</item>
+        <item>부탄 975 5 ㅂ</item>
+        <item>불가리아 359 7 ㅂ</item>
+        <item>브라질 55 8 ㅂ</item>
+        <item>브루나이 673 7 ㅂ</item>
+        <item>사우디아라비아 966 10 ㅅ</item>
+        <item>사이프러스 357 6 ㅅ</item>
+        <item>산마리노 378 10 ㅅ</item>
+        <item>상투메-프린시페 239 6 ㅅ</item>
+        <item>서사모아 685 7 ㅅ</item>
+        <item>세네갈 221 7 ㅅ</item>
+        <item>세르비아 381 0 ㅅ</item>
+        <item>세이셸 248 6 ㅅ</item>
+        <item>세인트-루시아 1758 7 ㅅ</item>
+        <item>세인트-빈센트 1784 7 ㅅ</item>
+        <item>소말리아 252 7 ㅅ</item>
+        <item>솔로몬-제도 677 7 ㅅ</item>
+        <item>수단 249 9 ㅅ</item>
+        <item>수리남 597 6 ㅅ</item>
+        <item>스리랑카 94 7|8 ㅅ</item>
+        <item>스와질란드 268 7 ㅅ</item>
+        <item>스웨덴 46 6 ㅅ</item>
+        <item>스위스 41 10 ㅅ</item>
+        <item>스페인 34 9 ㅅ</item>
+        <item>슬로바키아 421 7 ㅅ</item>
+        <item>슬로베니아 386 7 ㅅ</item>
+        <item>시리아 963 9 ㅅ</item>
+        <item>시에라리온 232 6 ㅅ</item>
+        <item>싱가포르 65 8 ㅅ</item>
+        <item>아랍에미리트 971 11 ㅇ</item>
+        <item>아루바 297 7 ㅇ</item>
+        <item>아르메니아 374 8 ㅇ</item>
+        <item>아르헨티나 54 7 ㅇ</item>
+        <item>아이슬란드 354 7 ㅇ</item>
+        <item>아이티 509 8 ㅇ</item>
+        <item>아일-오브-맨 44 0 ㅇ</item>
+        <item>아일랜드 353 9 ㅇ</item>
+        <item>아제르바이잔 994 9 ㅇ</item>
+        <item>아프가니스탄 93 6 ㅇ</item>
+        <item>안도라 376 6 ㅇ</item>
+        <item>알바니아 355 7 ㅇ</item>
+        <item>알제리 213 6 ㅇ</item>
+        <item>앙골라 244 6 ㅇ</item>
+        <item>앤티가-바부다 1268 7 ㅇ</item>
+        <item>앵귈라 1264 7 ㅇ</item>
+        <item>어센션 247 4 ㅇ</item>
+        <item>에리트레아 291 0 ㅇ</item>
+        <item>에스토니아 372 7|8 ㅇ</item>
+        <item>에콰도르 593 7 ㅇ</item>
+        <item>에티오피아 251 7 ㅇ</item>
+        <item>엘살바도르 503 7 ㅇ</item>
+        <item>영국 44 10 ㅇ</item>
+        <item>예멘 967 6 ㅇ</item>
+        <item>오만 968 0 ㅇ</item>
+        <item>오스트레일리아 61 10 ㅇ</item>
+        <item>오스트리아 43 8 ㅇ</item>
+        <item>온두라스 504 7 ㅇ</item>
+        <item>요르단 962 7 ㅇ</item>
+        <item>우간다 256 9 ㅇ</item>
+        <item>우루과이 598 7 ㅇ</item>
+        <item>우즈베키스탄 998 7 ㅇ</item>
+        <item>우크라이나 380 10 ㅇ</item>
+        <item>월리스-푸-투나 681 0 ㅇ</item>
+        <item>이라크 964 8 ㅇ</item>
+        <item>이란 98 8 ㅇ</item>
+        <item>이스라엘 972 9 ㅇ</item>
+        <item>이집트 20 8 ㅇ</item>
+        <item>이탈리아 39 0 ㅇ</item>
+        <item>인도 91 10 ㅇ</item>
+        <item>인도네시아 62 10|11|12 ㅇ</item>
+        <item>일본 81 11 ㅇ</item>
+        <item>자메이카 1876 7 ㅈ</item>
+        <item>자이르 243 7 ㅈ</item>
+        <item>잠비아 260 9 ㅈ</item>
+        <item>적도기니 240 0 ㅈ</item>
+        <item>조지아 995 8 ㅈ</item>
+        <item>중국 86 11 ㅈ</item>
+        <item>중앙-아프리카-공화국 236 6 ㅈ</item>
+        <item>지부티 253 6 ㅈ</item>
+        <item>지브랄타 350 8 ㅈ</item>
+        <item>짐바브웨 263 9 ㅈ</item>
+        <item>차드 235 7 ㅊ</item>
+        <item>체코 420 9 ㅊ</item>
+        <item>칠레 56 7 ㅊ</item>
+        <item>카메룬 237 8 ㅋ</item>
+        <item>카보베르데 238 0 ㅋ</item>
+        <item>카자흐스탄 7 10 ㅋ</item>
+        <item>카타르 974 7 ㅋ</item>
+        <item>캄보디아 855 9 ㅋ</item>
+        <item>캐나다 1 7 ㅋ</item>
+        <item>케냐 254 7 ㅋ</item>
+        <item>케이맨-제도 1345 7 ㅋ</item>
+        <item>코모로 269 0 ㅋ</item>
+        <item>코스타리카 506 8 ㅋ</item>
+        <item>코트디부아르 225 8 ㅋ</item>
+        <item>콜롬비아 57 10 ㅋ</item>
+        <item>콩고 242 7 ㅋ</item>
+        <item>쿠바 53 7 ㅋ</item>
+        <item>쿠웨이트 965 8 ㅋ</item>
+        <item>쿡-제도 682 5 ㅋ</item>
+        <item>크로아티아 385 0 ㅋ</item>
+        <item>키르기스스탄 996 9 ㅋ</item>
+        <item>키리바시 686 0 ㅋ</item>
+        <item>타지키스탄 992 6 ㅌ</item>
+        <item>탄자니아 255 11 ㅌ</item>
+        <item>태국 66 10 ㅌ</item>
+        <item>터키 90 10 ㅌ</item>
+        <item>토고 228 7 ㅌ</item>
+        <item>토켈-라우 690 0 ㅌ</item>
+        <item>통가 676 7 ㅌ</item>
+        <item>투르크메니스탄 993 6 ㅌ</item>
+        <item>투발루 688 0 ㅌ</item>
+        <item>튀니지 216 8 ㅌ</item>
+        <item>트리니다드-토바고 1868 7 ㅌ</item>
+        <item>파나마 507 7 ㅍ</item>
+        <item>파라과이 595 0 ㅍ</item>
+        <item>파키스탄 92 11 ㅍ</item>
+        <item>파푸아뉴기니 675 7 ㅍ</item>
+        <item>팔라우 680 0 ㅍ</item>
+        <item>페로-제도 298 0 ㅍ</item>
+        <item>페루 51 0 ㅍ</item>
+        <item>포르투갈 351 9 ㅍ</item>
+        <item>폴란드 48 10 ㅍ</item>
+        <item>푸에르토-리코 1787 7 ㅍ</item>
+        <item>프랑스 33 10 ㅍ</item>
+        <item>프랑스령-기아나 594 10 ㅍ</item>
+        <item>프랑스령-폴리네시아 689 6 ㅍ</item>
+        <item>피지 679 7 ㅍ</item>
+        <item>핀란드 358 7 ㅍ</item>
+        <item>필리핀 63 11 ㅍ</item>
+        <item>핏-케언 870 0 ㅍ</item>
+        <item>헝가리 36 9 ㅎ</item>
+        <item>홍콩(중국) 852 8 ㅎ</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002f">
+        <item>ㄱ</item>
+        <item>ㄲ</item>
+        <item>ㄴ</item>
+        <item>ㄷ</item>
+        <item>ㄸ</item>
+        <item>ㄹ</item>
+        <item>ㅁ</item>
+        <item>ㅂ</item>
+        <item>ㅃ</item>
+        <item>ㅅ</item>
+        <item>ㅆ</item>
+        <item>ㅇ</item>
+        <item>ㅈ</item>
+        <item>ㅉ</item>
+        <item>ㅊ</item>
+        <item>ㅋ</item>
+        <item>ㅌ</item>
+        <item>ㅍ</item>
+        <item>ㅎ</item>
+    </string-array>
+</resources>

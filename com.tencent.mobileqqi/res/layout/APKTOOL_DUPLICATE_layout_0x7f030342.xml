@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207fc" android:scrollbarStyle="insideOverlay" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d94" android:background="#ffffffff" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0a0017" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f080d95" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03033b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

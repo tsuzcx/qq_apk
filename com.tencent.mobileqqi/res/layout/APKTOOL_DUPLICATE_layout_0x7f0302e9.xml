@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/icon" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="4.0dip" android:scaleType="fitXY" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0165" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00a0" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5a" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</LinearLayout>

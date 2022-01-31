@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080334" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.AnimationTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b001f" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a011d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080100" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b008b" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0089" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b008c" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b008a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
+</RelativeLayout>

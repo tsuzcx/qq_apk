@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c74" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="53.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="#ff393939" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:text="发给" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff393939" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c75" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206e0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c76" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <CheckBox android:textSize="16.0sp" android:textColor="#ff393939" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c77" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="45.0dip" android:layout_marginLeft="20.0dip" android:checked="false" android:button="@android:color/transparent" android:text="秘密赠送" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020808" android:drawablePadding="10.0dip" />
+            <FrameLayout android:background="#ffe9e9e9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206c9" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip">
+                    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c69" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="15.0dip" />
+                    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <com.qzone.gift.ui.component.DashedLineView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c70" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <TextView android:textSize="15.0sp" android:textColor="#ff7e6b5a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c78" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="送句祝福语" android:lineSpacingExtra="5.0dip" />
+                    </FrameLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c79" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qzone.widget.GiftEditor android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c7a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02076f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

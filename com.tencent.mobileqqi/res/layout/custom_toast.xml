@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dialogRoot" android:background="@drawable/dialog_bg" android:layout_width="216.0dip" android:layout_height="92.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/image" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="8.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/image" android:layout_centerHorizontal="true" style="@style/C6_Font" />
+</RelativeLayout>

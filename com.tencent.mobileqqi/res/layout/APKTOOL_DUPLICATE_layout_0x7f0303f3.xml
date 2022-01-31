@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020158" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="180.0dip" android:layout_marginBottom="10.0dip">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f63" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b50" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f64" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f65" android:layout_width="118.0dip" android:layout_height="118.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b2f" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f66" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f67" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="10.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080f68">
+            <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f69" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="30.0dip" />
+        </ScrollView>
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f68" android:background="#ff418af1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+                <ImageView android:layout_gravity="center_vertical" android:background="@android:color/transparent" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b51" />
+                <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080f6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d133b" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

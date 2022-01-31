@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:scrollbarStyle="insideOverlay" android:id="@id/album_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:divider="#ffdddddd" android:dividerHeight="1.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="15.0sp" android:textColor="#ffafafaf" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080871" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0ffd" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02027c" android:drawablePadding="10.0dip" />
+    </FrameLayout>
+</FrameLayout>

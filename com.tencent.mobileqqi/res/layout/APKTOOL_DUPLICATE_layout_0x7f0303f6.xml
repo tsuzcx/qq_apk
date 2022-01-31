@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="3.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080128" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="94.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b4e" android:scaleType="fitXY" />
+</LinearLayout>

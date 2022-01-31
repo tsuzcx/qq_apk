@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<view android:background="?APKTOOL_DUPLICATE_attr_0x7f010010" android:layout_width="wrap_content" android:layout_height="fill_parent" class="android.support.v7.internal.widget.ActionBarView$HomeView"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-8.0dip" android:src="?APKTOOL_DUPLICATE_attr_0x7f010013" />
+    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080014" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0003" android:layout_marginRight="8.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0003" android:scaleType="fitCenter" android:adjustViewBounds="true" />
+</view>

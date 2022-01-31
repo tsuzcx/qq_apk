@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807f3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807f4" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <RelativeLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807f5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+    <com.tencent.mobileqq.filemanager.widget.SendBottomBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0807f0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005b" parent="@android:style/Widget.Holo.ProgressBar.Horizontal" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005c" parent="@android:style/Widget.Holo.ProgressBar" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0075" parent="@android:style/Widget.Holo.AutoCompleteTextView" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0076" parent="@android:style/Widget.Holo.Light.AutoCompleteTextView" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0080" parent="@android:style/Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0081" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0089" parent="@android:style/Theme.Holo.Dialog">
+        <item name="0">false</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010003">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0011</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010004">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0014</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010005">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0012</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010006">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0013</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e008a" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="0">false</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010003">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0011</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010004">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0014</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010005">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0012</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010006">@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0013</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+    </style>
+</resources>

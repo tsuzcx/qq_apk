@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08082f" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.2">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080830" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_centerVertical="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080831" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="3.0dip" android:layout_centerHorizontal="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080832" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080833" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.2">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080834" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="70.0dip" android:layout_centerVertical="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080835" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="82.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080836" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.2">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080837" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_centerVertical="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080838" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="42.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080839" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.2">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="72.0dip" android:layout_centerVertical="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="62.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083c" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.2">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/APKTOOL_DUPLICATE_id_0x7f08083f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</LinearLayout>

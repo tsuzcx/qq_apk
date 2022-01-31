@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ab7" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0133" android:gravity="center_horizontal" android:id="@id/no_chat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1004" android:drawableTop="@drawable/no_chat" android:drawablePadding="20.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

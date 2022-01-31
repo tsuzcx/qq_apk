@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.EmoEditPanel android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080bf2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080bf2" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0302f6" />
+</com.qzone.widget.EmoEditPanel>

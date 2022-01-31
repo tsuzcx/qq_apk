@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:enabled="false" android:orientation="horizontal" android:background="?APKTOOL_DUPLICATE_attr_0x7f010010" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="?APKTOOL_DUPLICATE_attr_0x7f010013" />
+    <LinearLayout android:layout_gravity="center|left" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0006" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0007" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

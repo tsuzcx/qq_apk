@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="0">2</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0001">22</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0002">18</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0003">16</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0004">14</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0005">12</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0006">400</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0007">200</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0008">1800</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c0009">2100</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c000a">16</integer>
+    <integer name="APKTOOL_DUPLICATE_integer_0x7f0c000b">12</integer>
+</resources>

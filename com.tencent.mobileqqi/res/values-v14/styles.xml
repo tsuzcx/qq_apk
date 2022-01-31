@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e003b" parent="@android:style/Widget.Holo.ActionBar" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e003c" parent="@android:style/Widget.Holo.Light.ActionBar" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e003d" parent="@android:style/Widget.Holo.ActionBar.Solid" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e003e" parent="@android:style/Widget.Holo.Light.ActionBar.Solid" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e003f" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0040" parent="@android:style/Widget.Holo.ActionButton" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0041" parent="@android:style/Widget.Holo.Light.ActionButton" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0042" parent="@android:style/Widget.Holo.ActionButton.CloseMode" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0043" parent="@android:style/Widget.Holo.Light.ActionButton.CloseMode" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0044" parent="@android:style/Widget.Holo.ActionButton.Overflow" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0045" parent="@android:style/Widget.Holo.Light.ActionButton.Overflow" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0046" parent="@android:style/Widget.Holo.ActionBar.TabBar" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0047" parent="@android:style/Widget.Holo.Light.ActionBar.TabBar" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0048" parent="@android:style/Widget.Holo.Light.ActionBar.TabBar.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0049" parent="@android:style/Widget.Holo.ActionBar.TabView" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004a" parent="@android:style/Widget.Holo.Light.ActionBar.TabView" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004b" parent="@android:style/Widget.Holo.Light.ActionBar.TabView.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004c" parent="@android:style/Widget.Holo.ActionBar.TabText" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004d" parent="@android:style/Widget.Holo.Light.ActionBar.TabText" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004e" parent="@android:style/Widget.Holo.Light.ActionBar.TabText.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e004f" parent="@android:style/Widget.Holo.ActionMode" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0050" parent="@android:style/Widget.Holo.Light.ActionMode" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0051" parent="@android:style/Widget.Holo.Light.ActionMode.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0052" parent="@android:style/TextAppearance.Holo.Widget.ActionMode.Title" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0053" parent="@android:style/TextAppearance.Holo.Widget.ActionMode.Subtitle" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0054" parent="@android:style/TextAppearance.Holo.Widget.ActionMode.Title.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0055" parent="@android:style/TextAppearance.Holo.Widget.ActionMode.Subtitle.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0056" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0057" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0058" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Subtitle" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0059" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005a" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Subtitle.Inverse" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005d" parent="@android:style/Widget.Holo.Spinner" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005e" parent="@android:style/Widget.Holo.Light.Spinner" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e005f" parent="@android:style/Widget.Holo.DropDownItem.Spinner" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0060" parent="@android:style/Widget.Holo.Light.DropDownItem.Spinner" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0061" parent="@android:style/Widget.Holo.ListView.DropDown" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0062" parent="@android:style/Widget.Holo.ListView.DropDown" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0066" parent="@android:style/Widget.ListView.Menu" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0067" parent="@android:style/Widget.Holo.ListPopupWindow" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0068" parent="@android:style/Widget.Holo.Light.ListPopupWindow" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0069" parent="@android:style/Widget.Holo.PopupMenu" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e006a" parent="@android:style/Widget.Holo.Light.PopupMenu" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e006b" parent="@android:style/TextAppearance.Holo.Widget.PopupMenu.Large" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e006c" parent="@android:style/TextAppearance.Holo.Widget.PopupMenu.Small" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e006d" parent="@android:style/TextAppearance.Holo.Widget.PopupMenu.Large" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e006e" parent="@android:style/TextAppearance.Holo.Widget.PopupMenu.Small" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0070" parent="@android:style/TextAppearance.Holo.SearchResult.Title" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0071" parent="@android:style/TextAppearance.Holo.SearchResult.Subtitle" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0073" parent="@android:style/TextAppearance.Holo.SearchResult.Title" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0074" parent="@android:style/TextAppearance.Holo.SearchResult.Subtitle" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0077">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/APKTOOL_DUPLICATE_drawable_0x7f020005</item>
+        <item name="android:divider">?APKTOOL_DUPLICATE_attr_0x7f01001a</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:dividerPadding">6.0dip</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0082" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarWidgetTheme">?APKTOOL_DUPLICATE_attr_0x7f01000d</item>
+        <item name="0">?android:windowActionBar</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000d">@null</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000e">?android:actionBarSize</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010010">?android:actionBarItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010016">?android:actionButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001a">?android:dividerVertical</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001b">?android:dividerHorizontal</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001c">?android:listPreferredItemHeight</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001d">?android:listPreferredItemHeightSmall</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001e">?android:listPreferredItemHeightLarge</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001f">?android:listPreferredItemPaddingLeft</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010020">?android:listPreferredItemPaddingRight</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0083" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarWidgetTheme">?APKTOOL_DUPLICATE_attr_0x7f01000d</item>
+        <item name="0">?android:windowActionBar</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000d">@null</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000e">?android:actionBarSize</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010010">?android:actionBarItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010016">?android:actionButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001a">?android:dividerVertical</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001b">?android:dividerHorizontal</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001c">?android:listPreferredItemHeight</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001d">?android:listPreferredItemHeightSmall</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001e">?android:listPreferredItemHeightLarge</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001f">?android:listPreferredItemPaddingLeft</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010020">?android:listPreferredItemPaddingRight</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0084" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarWidgetTheme">?APKTOOL_DUPLICATE_attr_0x7f01000d</item>
+        <item name="0">?android:windowActionBar</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000d">@style/APKTOOL_DUPLICATE_style_0x7f0e0079</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000e">?android:actionBarSize</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010010">?android:actionBarItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010016">?android:actionButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001a">?android:dividerVertical</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001b">?android:dividerHorizontal</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001c">?android:listPreferredItemHeight</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001d">?android:listPreferredItemHeightSmall</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001e">?android:listPreferredItemHeightLarge</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001f">?android:listPreferredItemPaddingLeft</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010020">?android:listPreferredItemPaddingRight</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0087" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0273" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0088" parent="@style/APKTOOL_DUPLICATE_style_0x7f0e0274" />
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0273" parent="@android:style/Theme.Holo.DialogWhenLarge">
+        <item name="android:actionBarWidgetTheme">?APKTOOL_DUPLICATE_attr_0x7f01000d</item>
+        <item name="0">?android:windowActionBar</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000d">@null</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000e">?android:actionBarSize</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010010">?android:actionBarItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010016">?android:actionButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001a">?android:dividerVertical</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001b">?android:dividerHorizontal</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001c">?android:listPreferredItemHeight</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001d">?android:listPreferredItemHeightSmall</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001e">?android:listPreferredItemHeightLarge</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001f">?android:listPreferredItemPaddingLeft</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010020">?android:listPreferredItemPaddingRight</item>
+    </style>
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0274" parent="@android:style/Theme.Holo.Light.DialogWhenLarge">
+        <item name="android:actionBarWidgetTheme">?APKTOOL_DUPLICATE_attr_0x7f01000d</item>
+        <item name="0">?android:windowActionBar</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000d">@null</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01000e">?android:actionBarSize</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010010">?android:actionBarItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010016">?android:actionButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010017">?android:buttonBarStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010018">?android:buttonBarButtonStyle</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010019">?android:selectableItemBackground</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001a">?android:dividerVertical</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001b">?android:dividerHorizontal</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001c">?android:listPreferredItemHeight</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001d">?android:listPreferredItemHeightSmall</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001e">?android:listPreferredItemHeightLarge</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f01001f">?android:listPreferredItemPaddingLeft</item>
+        <item name="APKTOOL_DUPLICATE_attr_0x7f010020">?android:listPreferredItemPaddingRight</item>
+    </style>
+</resources>

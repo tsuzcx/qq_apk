@@ -1,0 +1,89 @@
+html, body, h3, ul {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    overflow: hidden;
+}
+#container {
+    font-size: 0;
+    width: 100%;
+    background-color: transparent;
+    border-top: 1px solid #B3B3B3;
+}
+
+#struct1 {
+    display: none;
+    position: relative;
+    color: #FFF;
+}
+#struct1 #ad_origin {
+    position: absolute;
+    font-size: 12px;
+    letter-spacing: -1px;
+    height: 17px;
+    line-height: 18px;
+    padding: 0 2px;
+    bottom: 0;
+    left: -69px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 0.7em;
+    -webkit-transition: 0.4s ease-out;
+}
+#struct1 #ad_origin.expand {
+    left: 0;
+}
+#struct1 img {
+    width: 100%;
+}
+
+
+#struct2 {
+    display: none;
+    position: relative;
+    background-color: #F3F3F3;
+    font-size: 12px;
+}
+#struct2-inner {
+    padding: 9px 5%;
+    letter-spacing: 1px;
+}
+#struct2-inner h3 {
+    color: #9D9D9D;
+    font-weight: normal;
+}
+#struct2-inner div {
+    margin: 6px 0;
+    color: #000;
+}
+#struct2-inner div a {
+    display: -webkit-box;
+    height: 41px;
+    width: 93.5%;
+    padding: 4px 9px;
+    border: 1px solid #B2B2B2;
+    border-top: none;
+    color: #000;
+    text-decoration: none;
+    background-color: #FFF;
+    -webkit-tap-highlight-color: #E5E5E5;
+}
+#struct2-inner div a .text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-flex: 1;
+    font-size: 15px;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 21px;
+    margin: 0;
+}
+#struct2-inner div a img {
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+#struct2-inner div a:first-child {
+    border-top: 1px solid #B2B2B2;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>添加生活服务</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript"> 
+	var T=[];T.push(new Date()-0);
+	function searchSubmit(){
+		return false;	
+	}
+</script> 
+<link rel="stylesheet" type="text/css" href="style/search.css?t=20131217001"/>
+</head>
+<body>
+<div id="body_container">
+    <div class="mask" id="mask" style=" display:none">
+        <div class="loading"></div>
+    </div>    
+    <div class="searchBar andSearch" id="search_bar" style="display:none">        
+        <a href="#" class="cityBtn" id="city_btn"><span class="cityIcon"></span><span id="city_name">全国</span></a>
+        <div class="inputWrap">    	
+            <div class="searchIcon"></div>  
+			<div class="inputBox">   
+				<form onSubmit="return searchSubmit()">
+				<input type="search" id="search_input" class="searchInput"  value=""  autocomplete="off" />	
+				</form>
+			</div>   
+            <div class="clearBtn" id="clear_btn" style="display:none"></div>
+			<span class="searchSumit" id="search_sumit">搜索</span>
+        </div>
+        
+    </div>
+
+    <div class="container" id="container"> 
+        <ul id="list"></ul>
+    </div>
+</div>
+<div id="city_box" class="cityBox" ><!--style=" display: none"-->
+	<div class="cityTitle">请选择你所在的地域：</div>
+    <ul id="city_list">
+    	<li param="1|11"><a href="#">北京<span></span></a></li>
+        <li param="1|31"><a href="#">上海<span></span></a></li>
+        <li param="1|44|1"><a href="#">广州<span></span></a></li>
+        <li param="1|44|3"><a href="#">深圳<span></span></a></li>
+        <li param="1|51|1"><a href="#">成都<span></span></a></li>
+        <li param="1" id="init_sel" class="citySel"><a href="#">全国<span></span></a></li>  
+    </ul>
+
+</div>
+
+<div class="tips" id="tips" style="display:none">
+	<div class="tipsBox" id="tips_box">
+    	<div class="tipsTxt" id="tips_txt">操作失败，请检查你的网络设置</div>
+    </div>	 	
+</div>
+
+<div style="display:none">
+<img src="style/images/loading2.gif" />
+<script language="javascript">
+	var ua = navigator.userAgent; 
+	var platform = {}; 
+	platform.Android = ua.indexOf("Android") > -1 ;
+	platform.iPhone = ua.indexOf("iPhone") > -1 ;
+	platform.iPad = ua.indexOf("iPad") > -1 ;
+	platform.iPod = ua.indexOf("iPod") > -1 ;
+	platform.IOS = platform.iPad || platform.iPhone;  
+	if (platform.IOS > 0){
+		document.write('<script type="text\/javascript" src="http:\/\/__.qq.com\/api\/qqapi.js"><\/script>');
+		document.body.className = 'iosBody';
+	}
+	if ((platform.Android) && typeof(publicAccount) != 'object'){ 			
+		html = '<script type="text_javascript" src="js_jsbridge.js"><_script>';//引入scheme通讯api js
+		html = html.replace(/_/g, '/');
+		document.write(html);	
+	}
+
+	var html = '<script type="text_javascript" src="js_jm.js?t=20131217001"><_script>';
+	 
+	html = html.replace(/_/g, '/');  
+	document.write(html);
+	
+	html = '<script type="text_javascript" src="js_search.js?t=20131217001"><_script>';
+	html = html.replace(/_/g, '/'); 
+	document.write(html);
+</script>
+</div>
+</body>
+</html>

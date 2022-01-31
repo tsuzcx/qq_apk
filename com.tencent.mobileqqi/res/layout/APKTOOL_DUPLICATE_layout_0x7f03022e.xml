@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f08010f" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.widget.Gallery android:id="@id/gallery" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806ba" android:visibility="invisible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+</RelativeLayout>

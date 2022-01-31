@@ -1,0 +1,37 @@
+package com.qzone.utils.thread;
+
+import android.os.Process;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class PriorityThreadFactory
+  implements ThreadFactory
+{
+  private final String mName;
+  private final AtomicInteger mNumber = new AtomicInteger();
+  private final int mPriority;
+  
+  public PriorityThreadFactory(String paramString, int paramInt)
+  {
+    this.mName = paramString;
+    this.mPriority = paramInt;
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    new Thread(paramRunnable, this.mName + '-' + this.mNumber.getAndIncrement())
+    {
+      public void run()
+      {
+        Process.setThreadPriority(PriorityThreadFactory.this.mPriority);
+        super.run();
+      }
+    };
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+ * Qualified Name:     com.qzone.utils.thread.PriorityThreadFactory
+ * JD-Core Version:    0.7.0.1
+ */

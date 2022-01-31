@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>测试页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />
+<meta name="format-detection" content="telephone=no" />
+</head>
+<body>
+<div>
+我是测试页面1
+bid 10011, cid 10006, source_id 1
+bid 10009, cid 10009, source_id 1
+<textarea id="tx" rows="3" cols="20">
+coupon.addCoupon(10011,10006,1,"callback");
+</textarea>
+<input type="button" value="执行" id="btn" />
+<script>
+function callback(o){
+	alert(o.status);
+}
+function $(id){return document.getElementById(id);}
+$('btn').onclick=function(){
+	eval($("tx").value);
+}
+</script>
+</div>
+</body>
+</html>

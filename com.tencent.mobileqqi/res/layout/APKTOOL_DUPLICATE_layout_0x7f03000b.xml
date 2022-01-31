@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.internal.widget.LinearLayoutICS android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d8" android:layout_width="wrap_content" android:layout_height="fill_parent" style="?attr/activityChooserViewStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f03000c" />
+</android.support.v7.internal.widget.LinearLayoutICS>

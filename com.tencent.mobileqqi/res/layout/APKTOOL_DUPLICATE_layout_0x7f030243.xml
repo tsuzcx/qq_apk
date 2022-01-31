@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020610" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800d4" android:layout_width="fill_parent" android:layout_height="155.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204a4" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020611" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0800d4" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0800d4" />
+</RelativeLayout>

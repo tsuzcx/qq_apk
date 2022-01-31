@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqqi">
+    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0008" android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0df1" />
+    <CheckBox android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0008" android:id="@id/delRoamMsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:checked="true" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020143" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0dc1" />
+</LinearLayout>

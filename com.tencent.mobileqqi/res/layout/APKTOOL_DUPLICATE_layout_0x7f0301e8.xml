@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08082c" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08082d" android:layout_width="57.0dip" android:layout_height="57.0dip" android:layout_centerHorizontal="true">
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f08082e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020479" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_centerInParent="true">
+            <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080171" android:layout_width="52.0dip" android:layout_height="52.0dip" />
+        </FrameLayout>
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f08010d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="80.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f08082d" android:layout_centerHorizontal="true" />
+</RelativeLayout>

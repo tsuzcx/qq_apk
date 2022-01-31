@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:focusable="true" android:layout_width="fill_parent" android:layout_height="63.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/item_checkbox" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201f4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="12.0dip" android:checked="false" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080117" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="0.0dip" android:layout_toRightOf="@id/item_checkbox">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808b9" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a004f" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0047" android:layout_alignParentTop="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ba" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="6.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808b9" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0132" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808bb" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808ba" />
+    </RelativeLayout>
+</RelativeLayout>

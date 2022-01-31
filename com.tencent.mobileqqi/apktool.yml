@@ -1,0 +1,29 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: QQ国际版_6.0.0.apk
+compressionType: false
+doNotCompress:
+- resources.arsc
+- png
+- jpg
+- mp3
+- mp4
+isFrameworkApk: false
+packageInfo:
+  forcedPackageId: '127'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '7'
+  targetSdkVersion: '15'
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  BeaconVersion.txt: '8'
+  com/qq/jce/wup/wup.properties: '8'
+usesFramework:
+  ids:
+  - 1
+  tag: null
+version: 2.6.0
+versionInfo:
+  versionCode: '6500'
+  versionName: 6.0.0

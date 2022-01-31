@@ -1,0 +1,36 @@
+package com.tencent.mobileqq.msf.core.b;
+
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.d;
+import com.tencent.mobileqq.msf.core.l;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+
+public class s
+  implements c
+{
+  MsfCore a;
+  
+  public s(MsfCore paramMsfCore)
+  {
+    this.a = paramMsfCore;
+  }
+  
+  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
+    throws Exception
+  {
+    byte[] arrayOfByte = new byte[paramMsfSocketInputBuffer.getBufferlen()];
+    System.arraycopy(paramMsfSocketInputBuffer.getBuffer(), 0, arrayOfByte, 0, arrayOfByte.length);
+    this.a.sender.b(arrayOfByte);
+  }
+  
+  public byte[] a(d paramd, String paramString1, String paramString2, byte[] paramArrayOfByte)
+  {
+    return paramArrayOfByte;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.msf.core.b.s
+ * JD-Core Version:    0.7.0.1
+ */

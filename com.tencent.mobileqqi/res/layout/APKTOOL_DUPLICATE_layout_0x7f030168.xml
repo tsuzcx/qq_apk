@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodRelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020bd0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806d5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/inputBar" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0806d5">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0801e2" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <ImageButton android:id="@id/emo_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020747" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0d0059" />
+        <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a013a" android:id="@id/input" android:background="@drawable/skin_aio_input_bg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:maxLines="3" android:layout_weight="1.0" android:inputType="textMultiLine" android:textSelectHandle="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ae8" />
+        <Button android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0110" android:id="@id/send_btn" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200ad" android:layout_width="59.0dip" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0099" android:layout_marginLeft="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d1169" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0806d6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/inputBar" />
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0080" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/inputBar" />
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0a0080" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/inputBar" />
+</com.tencent.mobileqq.widget.InputMethodRelativeLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200e1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080eb0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f080534" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080534" android:background="@drawable/skin_aio_input_bar_bg" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="67.0dip" android:layout_alignParentBottom="true">
+        <Button android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080e49" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="11.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0c7a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e017f" />
+    </LinearLayout>
+</RelativeLayout>

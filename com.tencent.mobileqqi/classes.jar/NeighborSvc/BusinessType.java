@@ -1,0 +1,92 @@
+package NeighborSvc;
+
+import java.io.Serializable;
+
+public final class BusinessType
+  implements Serializable
+{
+  public static final BusinessType BusinessType_Friend;
+  public static final BusinessType BusinessType_MCard;
+  public static final BusinessType BusinessType_MQQ;
+  public static final BusinessType BusinessType_MQQNoAct;
+  public static final BusinessType BusinessType_SNG;
+  public static final int _BusinessType_Friend = 1;
+  public static final int _BusinessType_MCard = 3;
+  public static final int _BusinessType_MQQ = 0;
+  public static final int _BusinessType_MQQNoAct = 2;
+  public static final int _BusinessType_SNG = 4;
+  private static BusinessType[] a;
+  private String __T = new String();
+  private int __value;
+  
+  static
+  {
+    if (!BusinessType.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      $assertionsDisabled = bool;
+      a = new BusinessType[5];
+      BusinessType_MQQ = new BusinessType(0, 0, "BusinessType_MQQ");
+      BusinessType_Friend = new BusinessType(1, 1, "BusinessType_Friend");
+      BusinessType_MQQNoAct = new BusinessType(2, 2, "BusinessType_MQQNoAct");
+      BusinessType_MCard = new BusinessType(3, 3, "BusinessType_MCard");
+      BusinessType_SNG = new BusinessType(4, 4, "BusinessType_SNG");
+      return;
+    }
+  }
+  
+  private BusinessType(int paramInt1, int paramInt2, String paramString)
+  {
+    this.__T = paramString;
+    this.__value = paramInt2;
+    a[paramInt1] = this;
+  }
+  
+  public static BusinessType convert(int paramInt)
+  {
+    int i = 0;
+    while (i < a.length)
+    {
+      if (a[i].value() == paramInt) {
+        return a[i];
+      }
+      i += 1;
+    }
+    if (!$assertionsDisabled) {
+      throw new AssertionError();
+    }
+    return null;
+  }
+  
+  public static BusinessType convert(String paramString)
+  {
+    int i = 0;
+    while (i < a.length)
+    {
+      if (a[i].toString().equals(paramString)) {
+        return a[i];
+      }
+      i += 1;
+    }
+    if (!$assertionsDisabled) {
+      throw new AssertionError();
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    return this.__T;
+  }
+  
+  public int value()
+  {
+    return this.__value;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqqi\classes2.jar
+ * Qualified Name:     NeighborSvc.BusinessType
+ * JD-Core Version:    0.7.0.1
+ */

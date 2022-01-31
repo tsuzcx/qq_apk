@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808e8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0205bd" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_centerVertical="true">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="45.0dip" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0808ea" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808eb" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808f7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="一条为接听电话" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808eb" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:text="下午 10:10" android:layout_alignParentRight="true" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0020" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0808ef" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0808ec" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0808ec" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

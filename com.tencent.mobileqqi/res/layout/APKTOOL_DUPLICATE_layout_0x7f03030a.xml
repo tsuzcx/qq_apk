@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5b" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.qzone.widget.textwidget.CellTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0167" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a0099" android:ellipsize="end" android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5c" android:layout_width="174.0dip" android:layout_height="wrap_content" android:text="飛翔的小球球" android:singleLine="true" />
+            <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0164" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a009d" android:ellipsize="end" android:gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d053d" android:singleLine="true" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0186" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00a7" android:ellipsize="none" android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c5d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0166" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a009a" android:ellipsize="none" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080cde" android:paddingLeft="14.0dip" android:paddingTop="2.0dip" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b0182" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:minWidth="30.0dip" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207aa" android:drawablePadding="6.0dip" />
+</LinearLayout>

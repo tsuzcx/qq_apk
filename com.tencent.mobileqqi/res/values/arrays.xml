@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="0">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0197</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0198</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0199</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019a</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0001">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0197</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0198</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019a</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0002">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019a</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0003">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019b</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019c</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0004">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019a</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019b</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019c</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0005">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019c</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0006">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019d</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0007">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019e</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d019f</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0008">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a1</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0009">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b6</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000a">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0f3d</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0d0a</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000b">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a2</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a3</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000c">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a2</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a4</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000d">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a3</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000e">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d1108</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d1101</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0c80</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f000f">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d1108</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0c80</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0010">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a5</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0011">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a6</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0012">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a7</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0013">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a8</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0014">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01a9</item>
+    </string-array>
+    <integer-array name="APKTOOL_DUPLICATE_array_0x7f0f0015">
+        <item>0</item>
+        <item>1</item>
+        <item>20</item>
+        <item>21</item>
+    </integer-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0016">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01aa</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ab</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ac</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0198</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ad</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ae</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01af</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b2</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b3</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b4</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b5</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b6</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b7</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b8</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b9</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ba</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0017">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d0da0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d114b</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b9</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0018">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d07cf</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d07d0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d07d1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b9</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0019">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b6</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b7</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001a">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01bb</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01bc</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b9</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001b">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01bd</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01be</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001c">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01bf</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c2</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c3</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c4</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c5</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001d">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c6</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c7</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c8</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01c9</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ca</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01cb</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01b9</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001e">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01cc</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01cd</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01ce</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f001f">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01cf</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d0</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d1</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d2</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0020">
+        <item>.png</item>
+        <item>.gif</item>
+        <item>.jpg</item>
+        <item>.jpeg</item>
+        <item>.bmp</item>
+        <item>.ico</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0021">
+        <item>.mp2</item>
+        <item>.mp3</item>
+        <item>.wav</item>
+        <item>.ogg</item>
+        <item>.mid</item>
+        <item>.midi</item>
+        <item>.m3u</item>
+        <item>.m4a</item>
+        <item>.m4b</item>
+        <item>.m4p</item>
+        <item>.mpga</item>
+        <item>.wma</item>
+        <item>.amr</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0022">
+        <item>.wmv</item>
+        <item>.mp4</item>
+        <item>.rmvb</item>
+        <item>.avi</item>
+        <item>.flv</item>
+        <item>.rm</item>
+        <item>.asf</item>
+        <item>.mov</item>
+        <item>.mpg</item>
+        <item>.3gp</item>
+        <item>.m4u</item>
+        <item>.mpeg</item>
+        <item>.m4v</item>
+        <item>.vob</item>
+        <item>.mkv</item>
+        <item>.mpe</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0023">
+        <item>.apk</item>
+        <item>.jar</item>
+        <item>.zip</item>
+        <item>.rar</item>
+        <item>.gz</item>
+        <item>.tar</item>
+        <item>.img</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0024">
+        <item>.htm</item>
+        <item>.html</item>
+        <item>.php</item>
+        <item>.jsp</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0025">
+        <item>.txt</item>
+        <item>.java</item>
+        <item>.c</item>
+        <item>.cpp</item>
+        <item>.py</item>
+        <item>.xml</item>
+        <item>.json</item>
+        <item>.log</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0026">
+        <item>.doc</item>
+        <item>.docx</item>
+        <item>.dot</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0027">
+        <item>.xls</item>
+        <item>.xlsx</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0028">
+        <item>.ppt</item>
+        <item>.pptx</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0029">
+        <item>.pdf</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002a">
+        <item>.chm</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002b">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d3</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d4</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d5</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d6</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002c">
+        <item>China 86 11 Most-often-selected-countries</item>
+        <item>Macau(China) 853 8 Most-often-selected-countries</item>
+        <item>Hong-Kong(China) 852 8 Most-often-selected-countries</item>
+        <item>Taiwan 886 10 Most-often-selected-countries</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
+        <item>Most-often-selected-countries</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002e">
+        <item>Afghanistan 93 6 A</item>
+        <item>Albania 355 7 A</item>
+        <item>Algeria 213 6 A</item>
+        <item>Andorra 376 6 A</item>
+        <item>Angola 244 6 A</item>
+        <item>Anguilla 1264 7 A</item>
+        <item>Antarctica 672 0 A</item>
+        <item>Antigua-and-Barbuda 1268 7 A</item>
+        <item>Argentina 54 7 A</item>
+        <item>Armenia 374 8 A</item>
+        <item>Aruba 297 7 A</item>
+        <item>Ascension 247 4 A</item>
+        <item>Australia 61 10 A</item>
+        <item>Austria 43 8 A</item>
+        <item>Azerbaijan 994 9 A</item>
+        <item>Bahamas 1242 7 B</item>
+        <item>Bahrain 973 8 B</item>
+        <item>Bangladesh 880 7 B</item>
+        <item>Barbados 1246 7 B</item>
+        <item>Belarus 375 9 B</item>
+        <item>Belgium 32 8 B</item>
+        <item>Belize 501 7 B</item>
+        <item>Benin 229 8 B</item>
+        <item>Bermuda 1441 7 B</item>
+        <item>Bhutan 975 5 B</item>
+        <item>Bolivia 591 7 B</item>
+        <item>Bosnia-And-Herzegovina 387 0 B</item>
+        <item>Botswana 267 7 B</item>
+        <item>Brazil 55 8 B</item>
+        <item>Brunei 673 7 B</item>
+        <item>Bulgaria 359 7 B</item>
+        <item>Burkina-Faso 226 6 B</item>
+        <item>Burundi 257 8 B</item>
+        <item>Cambodia 855 9 C</item>
+        <item>Cameroon 237 8 C</item>
+        <item>Canada 1 7 C</item>
+        <item>Cape-Verde 238 0 C</item>
+        <item>Cayman-Islands 1345 7 C</item>
+        <item>Central-African-Republic 236 6 C</item>
+        <item>Chad 235 7 C</item>
+        <item>Chile 56 7 C</item>
+        <item>China 86 11 C</item>
+        <item>Colombia 57 10 C</item>
+        <item>Comoros 269 0 C</item>
+        <item>Congo 242 7 C</item>
+        <item>Cook-Islands 682 5 C</item>
+        <item>Costa-Rica 506 8 C</item>
+        <item>Croatia 385 0 C</item>
+        <item>Cuba 53 7 C</item>
+        <item>Cyprus 357 6 C</item>
+        <item>Czech-Republic 420 9 C</item>
+        <item>Denmark 45 8 D</item>
+        <item>Djibouti 253 6 D</item>
+        <item>Dominican-Republic 1890 7 D</item>
+        <item>East-Samoa-(U.S.) 1684 7 E</item>
+        <item>Ecuador 593 7 E</item>
+        <item>Egypt 20 8 E</item>
+        <item>El-Salvador 503 7 E</item>
+        <item>Equatorial-Guinea 240 0 E</item>
+        <item>Eritrea 291 0 E</item>
+        <item>Estonia 372 7|8 E</item>
+        <item>Ethiopia 251 7 E</item>
+        <item>Faroe-Islands 298 0 F</item>
+        <item>Fiji 679 7 F</item>
+        <item>France 33 10 F</item>
+        <item>French-Guiana 594 10 F</item>
+        <item>French-Polynesia 689 6 F</item>
+        <item>Finland 358 7 F</item>
+        <item>Gabon 241 6 G</item>
+        <item>Gambia 220 7 G</item>
+        <item>Georgia 995 8 G</item>
+        <item>Germany 49 11 G</item>
+        <item>Ghana 233 10 G</item>
+        <item>Gibraltar 350 8 G</item>
+        <item>Greece 30 10 G</item>
+        <item>Greenland 299 0 G</item>
+        <item>Grenada 1473 7 G</item>
+        <item>Guam 1671 7 G</item>
+        <item>Guatemala 502 8 G</item>
+        <item>Guinea 224 6 G</item>
+        <item>Guinea-bissau 245 0 G</item>
+        <item>Guyana 592 12 G</item>
+        <item>Haiti 509 8 H</item>
+        <item>Honduras 504 7 H</item>
+        <item>Hong-Kong(China) 852 8 H</item>
+        <item>Hungary 36 9 H</item>
+        <item>Iceland 354 7 I</item>
+        <item>India 91 10 I</item>
+        <item>Indonesia 62 10|11|12 I</item>
+        <item>Iran 98 8 I</item>
+        <item>Iraq 964 8 I</item>
+        <item>Ireland 353 9 I</item>
+        <item>Isle-Of-Man 44 0 I</item>
+        <item>Israel 972 9 I</item>
+        <item>Italy 39 10 I</item>
+        <item>Ivory-Coast 225 8 I</item>
+        <item>Japan 81 11 J</item>
+        <item>Jamaica 1876 7 J</item>
+        <item>Jordan 962 7 J</item>
+        <item>Kazakhstan 7 10 K</item>
+        <item>Kenya 254 7 K</item>
+        <item>Kiribati 686 0 K</item>
+        <item>Korea 82 11 K</item>
+        <item>Kuwait 965 8 K</item>
+        <item>Kyrgyzstan 996 9 K</item>
+        <item>Lao 856 10 L</item>
+        <item>Latvia 371 8 L</item>
+        <item>Lebanon 961 7 L</item>
+        <item>Lesotho 266 8 L</item>
+        <item>Liberia 231 7|8 L</item>
+        <item>Libya 218 10 L</item>
+        <item>Liechtenstein 423 7 L</item>
+        <item>Lithuania 370 5 L</item>
+        <item>Luxembourg 352 9 L</item>
+        <item>Macao(China) 853 8 M</item>
+        <item>Macedonia 389 0 M</item>
+        <item>Madagascar 261 7 M</item>
+        <item>Malawi 265 9 M</item>
+        <item>Malaysia 60 10 M</item>
+        <item>Maldives 960 7 M</item>
+        <item>Mali 223 8 M</item>
+        <item>Malta 356 8 M</item>
+        <item>Mariana-Islands 596 10 M</item>
+        <item>Marshall-Islands 692 0 M</item>
+        <item>Martinique 596 10 M</item>
+        <item>Mauritania 222 0 M</item>
+        <item>Mauritius 230 7 M</item>
+        <item>Mayotte 262 0 M</item>
+        <item>Mexico 52 8 M</item>
+        <item>Micronesia 691 0 M</item>
+        <item>Moldova 373 5 M</item>
+        <item>Monaco 377 8 M</item>
+        <item>Mongolia 976 0 M</item>
+        <item>Montenegro 382 0 M</item>
+        <item>Morocco 212 0 M</item>
+        <item>Mozambique 258 9 M</item>
+        <item>Myanmar 95 6 M</item>
+        <item>Namibia 264 0 M</item>
+        <item>Nauru 674 9 N</item>
+        <item>Nepal 977 9 N</item>
+        <item>Netherlands 31 9 N</item>
+        <item>New-Caledonia 687 0 N</item>
+        <item>New-Zealand 64 8 N</item>
+        <item>Nicaragua 505 0 N</item>
+        <item>Niger 227 7 N</item>
+        <item>Nigeria 234 11 N</item>
+        <item>Niue 683 0 N</item>
+        <item>Norway 47 8 N</item>
+        <item>Oman 968 0 O</item>
+        <item>Pakistan 92 11 P</item>
+        <item>Palau 680 0 P</item>
+        <item>Panama 507 7 P</item>
+        <item>Papua-New-Guinea 675 7 P</item>
+        <item>Paraguay 595 0 P</item>
+        <item>Peru 51 0 P</item>
+        <item>Philippines 63 11 P</item>
+        <item>Pitcairn 870 0 P</item>
+        <item>Poland 48 10 P</item>
+        <item>Portugal 351 9 P</item>
+        <item>Puerto-Rico 1787 7 P</item>
+        <item>Qatar 974 7 Q</item>
+        <item>Reunion 262 6 R</item>
+        <item>Romania 40 9 R</item>
+        <item>Russia 7 10 R</item>
+        <item>Rwanda 250 0 R</item>
+        <item>Saint-Lucia 1758 7 S</item>
+        <item>San-Marino 378 10 S</item>
+        <item>Sao-Tome-and-Principe 239 6 S</item>
+        <item>Saudi-Arabia 966 10 S</item>
+        <item>Senegal 221 7 S</item>
+        <item>Serbia 381 0 S</item>
+        <item>Seychelles 248 6 S</item>
+        <item>Sierra-Leone 232 6 S</item>
+        <item>Singapore 65 8 S</item>
+        <item>Slovakia 421 7 S</item>
+        <item>Slovenia 386 7 S</item>
+        <item>Solomon-Islands 677 7 S</item>
+        <item>Somalia 252 7 S</item>
+        <item>South-Africa 27 6 S</item>
+        <item>Spain 34 9 S</item>
+        <item>Sri-Lanka 94 7|8 S</item>
+        <item>Sudan 249 9 S</item>
+        <item>Suriname 597 6 S</item>
+        <item>Swaziland 268 7 S</item>
+        <item>Sweden 46 6 S</item>
+        <item>Switzerland 41 10 S</item>
+        <item>Syria 963 9 S</item>
+        <item>Taiwan 886 10 T</item>
+        <item>Tajikistan 992 6 T</item>
+        <item>Tanzania 255 11 T</item>
+        <item>Thailand 66 10 T</item>
+        <item>Timor-leste 670 0 T</item>
+        <item>Togo 228 7 T</item>
+        <item>Tokelau 690 0 T</item>
+        <item>Tonga 676 7 T</item>
+        <item>Tunisia 216 8 T</item>
+        <item>Turkey 90 10 T</item>
+        <item>Turkmenistan 993 6 T</item>
+        <item>Tuvalu 688 0 T</item>
+        <item>Trinidad-and-Tobago 1868 7 T</item>
+        <item>United-Arab-Emirates 971 11 U</item>
+        <item>Uganda 256 9 U</item>
+        <item>United-Kingdom 44 10 U</item>
+        <item>Ukraine 380 10 U</item>
+        <item>Uruguay 598 7 U</item>
+        <item>United-States 1 10 U</item>
+        <item>Uzbekistan 998 7 U</item>
+        <item>Vatican 39 0 V</item>
+        <item>Vanuatu 678 0 V</item>
+        <item>Venezuela 58 7 V</item>
+        <item>Vietnam 84 10 V</item>
+        <item>Vincent 1784 7 V</item>
+        <item>Wallis-And-Futuna 681 0 W</item>
+        <item>Western-Samoa 685 7 W</item>
+        <item>Yemen 967 6 Y</item>
+        <item>Zambia 260 9 Z</item>
+        <item>Zaire 243 7 Z</item>
+        <item>Zimbabwe 263 9 Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002f">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0030">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d7</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d8</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01d9</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0031">
+        <item>月点击超千万次神作：罗布泊之咒</item>
+        <item>小时代三部曲完结篇：刺金时代</item>
+        <item>盗猎者的诡异经历：鬼藏人</item>
+        <item>比外星美男叫兽更具魅力的男主</item>
+        <item>独家推荐：宅斗版后宫《甄嬛传》</item>
+        <item>治愈系：温暖写手叶非夜新书来袭</item>
+        <item>卧底女警行动时神秘失联</item>
+        <item>幽灵诅咒！死亡校舍排行</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0032">
+        <item>作者：周德东</item>
+        <item>作者：郭敬明</item>
+        <item>作者：李达</item>
+        <item>寻找属于你的“都敏俊”</item>
+        <item>不要小看女人</item>
+        <item>男神不要太多哦</item>
+        <item>女警神秘失联</item>
+        <item>死亡宿舍推荐</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0033">
+        <item>中国恐怖小说第一人周德东百万字巨著火热连载中，腾讯独家首发，本书集青春、爱情、悬疑、探险、魔幻于一体，共1001次高潮。邀您一起踏上惊心动魄的“罗布泊之旅”！</item>
+        <item>林萧、顾里、南湘、唐宛如四位主角的故事，画上出乎意料同时又无可辩驳的句号。郭敬明导演同名电影《小时代》最后一部2014年7月上映。前两季交错铺设下的伏笔，将在本季密集引爆。</item>
+        <item>30年前，一支由“死人”组建的勘探队进入杀龙岭，中国隐藏了数千年的终极秘密首次拉开大幕：莽莽丛林背后，究竟隐藏了什么秘密？“一切动物都指向那个终极——天黑莫上山，夜半鬼藏人……</item>
+        <item>此男主，前无古人后无来者，时有怪癖，却极富魅力，追其原因：多金、帅气、人间难遇！要如何把土豪变成自己的？攻略在此，不看后悔哦~</item>
+        <item>伯父冷漠，未婚夫背叛，视若亲母的伯母二十万两银子将她卖为商人妾，彻底断送了她的一生。重生归来，她决心报仇，那些践踏她的人，她必以牙还牙，加倍奉还！</item>
+        <item>“男神大人，小女子有罪，对您有跟踪罪，窥视罪，梦中情人罪……”林深深对着面前冷若冰霜的美男子——锦洋嘴里谢罪，脑内YY，心里大恨：老娘阅男无数，居然栽了！</item>
+        <item>王牌卧底执行公务时突然失联，神秘失踪。她到底遭遇何事，现又身在何处？</item>
+        <item>为寻找失踪的姐姐，她考入姐姐之前的同一所大学。入校当天天，一连串离奇事件就在宿舍接连上演，姐姐的失踪是否与这些有关？事件背后的真相到底是……</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0034">
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+        <item>大神推荐</item>
+        <item>热门书籍</item>
+        <item>热门书籍</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0035">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01da</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01db</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0036">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01dc</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01dd</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0037">
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01de</item>
+        <item>@string/APKTOOL_DUPLICATE_string_0x7f0d01df</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0038">
+        <item>View image</item>
+        <item>Better to use Wifi for viewing image</item>
+        <item>Start</item>
+        <item>No notification</item>
+    </string-array>
+</resources>

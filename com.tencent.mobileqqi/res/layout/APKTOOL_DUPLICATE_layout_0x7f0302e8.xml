@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c54" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be0" android:layout_width="wrap_content" android:layout_height="35.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="7.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c55" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020753" />
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00aa" android:ellipsize="none" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c56" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b016b" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0a00aa" android:ellipsize="none" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c57" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c58" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="13.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02075c" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c59" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02075f" />
+        </LinearLayout>
+        <ImageView android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020be1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</merge>

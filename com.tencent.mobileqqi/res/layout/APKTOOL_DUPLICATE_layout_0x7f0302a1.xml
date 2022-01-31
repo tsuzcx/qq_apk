@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f080af2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.signin.ui.widget.CommonBtmLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f080af3" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
+    <com.qzone.signin.ui.widget.CommonBtmLine android:id="@id/APKTOOL_DUPLICATE_id_0x7f080af4" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002c">
+        <item>中国 86 11 最常选择的国家地区</item>
+        <item>澳门（中国） 853 8 最常选择的国家地区</item>
+        <item>香港（中国） 852 8 最常选择的国家地区</item>
+        <item>台湾（中国） 886 10 最常选择的国家地区</item>
+        <item>美国 1 10 最常选择的国家地区</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002d">
+        <item>最常选择的国家地区</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002e">
+        <item>阿尔巴尼亚 355 7 A</item>
+        <item>阿尔及利亚 213 6 A</item>
+        <item>阿富汗 93 6 A</item>
+        <item>阿根廷 54 7 A</item>
+        <item>阿联酋 971 11 A</item>
+        <item>阿鲁巴岛 297 7 A</item>
+        <item>阿曼 968 0 A</item>
+        <item>阿塞拜疆 994 9 A</item>
+        <item>阿森松岛 247 4 A</item>
+        <item>埃及 20 8 A</item>
+        <item>埃塞俄比亚 251 7 A</item>
+        <item>爱尔兰 353 9 A</item>
+        <item>爱沙尼亚 372 7|8 A</item>
+        <item>安道尔共和国 376 6 A</item>
+        <item>安哥拉 244 6 A</item>
+        <item>安圭拉 1264 7 A</item>
+        <item>安提瓜和巴布达 1268 7 A</item>
+        <item>奥地利 43 8 A</item>
+        <item>澳大利亚 61 10 A</item>
+        <item>澳门（中国） 853 8 A</item>
+        <item>巴巴多斯 1246 7 B</item>
+        <item>巴布亚新几内亚 675 7 B</item>
+        <item>巴哈马群岛 1242 7 B</item>
+        <item>巴基斯坦 92 11 B</item>
+        <item>巴拉圭 595 0 B</item>
+        <item>巴林岛 973 8 B</item>
+        <item>巴拿马 507 7 B</item>
+        <item>巴西 55 8 B</item>
+        <item>白俄罗斯 375 9 B</item>
+        <item>百慕大 1441 7 B</item>
+        <item>保加利亚 359 7 B</item>
+        <item>贝宁 229 8 B</item>
+        <item>比利时 32 8 B</item>
+        <item>冰岛 354 7 B</item>
+        <item>波多黎各 1787 7 B</item>
+        <item>波兰 48 10 B</item>
+        <item>波斯尼亚和黑塞哥维那 387 0 B</item>
+        <item>玻利维亚 591 7 B</item>
+        <item>伯利兹 501 7 B</item>
+        <item>博茨瓦纳 267 7 B</item>
+        <item>不丹 975 5 B</item>
+        <item>布基纳法索 226 6 B</item>
+        <item>布隆迪 257 8 B</item>
+        <item>赤道几内亚 240 0 C</item>
+        <item>丹麦 45 8 D</item>
+        <item>德国 49 11 D</item>
+        <item>东帝汶 670 0 D</item>
+        <item>东萨摩亚（美国） 1684 7 D</item>
+        <item>多哥 228 7 D</item>
+        <item>多明尼加共和国 1890 7 D</item>
+        <item>俄罗斯 7 10 E</item>
+        <item>厄瓜多尔 593 7 E</item>
+        <item>厄立特里亚 291 0 E</item>
+        <item>法国 33 10 F</item>
+        <item>法罗群岛 298 0 F</item>
+        <item>法属波利尼西亚 689 6 F</item>
+        <item>法属圭亚那 594 10 F</item>
+        <item>梵蒂冈 39 0 F</item>
+        <item>菲律宾 63 11 F</item>
+        <item>斐济 679 7 F</item>
+        <item>芬兰 358 7 F</item>
+        <item>佛得角 238 0 F</item>
+        <item>冈比亚 220 7 G</item>
+        <item>刚果 242 7 G</item>
+        <item>哥伦比亚 57 10 G</item>
+        <item>哥斯达黎加 506 8 G</item>
+        <item>格林纳达 1473 7 G</item>
+        <item>格陵兰 299 0 G</item>
+        <item>格鲁吉亚 995 8 G</item>
+        <item>古巴 53 7 G</item>
+        <item>关岛 1671 7 G</item>
+        <item>圭亚那 592 12 G</item>
+        <item>哈萨克斯坦 7 10 H</item>
+        <item>海地 509 8 H</item>
+        <item>韩国 82 11 H</item>
+        <item>荷兰 31 9 H</item>
+        <item>黑山共和国 382 0 H</item>
+        <item>洪都拉斯 504 7 H</item>
+        <item>基里巴斯 686 0 J</item>
+        <item>吉布提 253 6 J</item>
+        <item>吉尔吉斯斯坦 996 9 J</item>
+        <item>几内亚 224 6 J</item>
+        <item>几内亚比绍 245 0 J</item>
+        <item>加拿大 1 7 J</item>
+        <item>加纳 233 10 J</item>
+        <item>加蓬 241 6 J</item>
+        <item>柬埔寨 855 9 J</item>
+        <item>捷克共和国 420 9 J</item>
+        <item>津巴布韦 263 9 J</item>
+        <item>喀麦隆 237 8 K</item>
+        <item>卡塔尔 974 7 K</item>
+        <item>开曼群岛 1345 7 K</item>
+        <item>科摩罗 269 0 K</item>
+        <item>科威特 965 8 K</item>
+        <item>克罗地亚 385 0 K</item>
+        <item>肯尼亚 254 7 K</item>
+        <item>库克群岛 682 5 K</item>
+        <item>拉脱维亚 371 8 L</item>
+        <item>莱索托 266 8 L</item>
+        <item>老挝 856 10 L</item>
+        <item>黎巴嫩 961 7 L</item>
+        <item>立陶宛 370 5 L</item>
+        <item>利比里亚 231 7|8 L</item>
+        <item>利比亚 218 10 L</item>
+        <item>列支敦士登 423 7 L</item>
+        <item>留尼旺岛 262 6 L</item>
+        <item>卢森堡 352 9 L</item>
+        <item>卢旺达 250 0 L</item>
+        <item>罗马尼亚 40 9 L</item>
+        <item>马达加斯加 261 7 M</item>
+        <item>马恩岛 44 0 M</item>
+        <item>马尔代夫 960 7 M</item>
+        <item>马耳他 356 8 M</item>
+        <item>马拉维 265 9 M</item>
+        <item>马来西亚 60 10 M</item>
+        <item>马里 223 8 M</item>
+        <item>马里亚纳群岛 596 10 M</item>
+        <item>马其顿 389 0 M</item>
+        <item>马绍尔群岛 692 0 M</item>
+        <item>马提尼克 596 10 M</item>
+        <item>马约特岛 262 0 M</item>
+        <item>毛里求斯 230 7 M</item>
+        <item>毛里塔尼亚 222 0 M</item>
+        <item>美国 1 10 M</item>
+        <item>蒙古国 976 0 M</item>
+        <item>孟加拉国 880 7 M</item>
+        <item>秘鲁 51 0 M</item>
+        <item>密克罗尼西亚 691 0 M</item>
+        <item>缅甸 95 6 M</item>
+        <item>摩尔多瓦 373 5 M</item>
+        <item>摩洛哥 212 0 M</item>
+        <item>摩纳哥 377 8 M</item>
+        <item>莫桑比克 258 9 M</item>
+        <item>墨西哥 52 8 M</item>
+        <item>纳米比亚 264 0 N</item>
+        <item>南非 27 6 N</item>
+        <item>南极洲 672 0 N</item>
+        <item>瑙鲁 674 9 N</item>
+        <item>尼泊尔 977 9 N</item>
+        <item>尼加拉瓜 505 0 N</item>
+        <item>尼日尔 227 7 N</item>
+        <item>尼日利亚 234 11 N</item>
+        <item>纽埃 683 0 N</item>
+        <item>挪威 47 8 N</item>
+        <item>帕劳 680 0 P</item>
+        <item>皮特凯恩 870 0 P</item>
+        <item>葡萄牙 351 9 P</item>
+        <item>日本 81 11 R</item>
+        <item>瑞典 46 6 R</item>
+        <item>瑞士 41 10 R</item>
+        <item>萨尔瓦多 503 7 S</item>
+        <item>塞尔维亚 381 0 S</item>
+        <item>塞拉利昂 232 6 S</item>
+        <item>塞内加尔 221 7 S</item>
+        <item>塞浦路斯 357 6 S</item>
+        <item>塞舌尔 248 6 S</item>
+        <item>沙特阿拉伯 966 10 S</item>
+        <item>圣多美和普林西比 239 6 S</item>
+        <item>圣卢西亚 1758 7 S</item>
+        <item>圣马力诺 378 10 S</item>
+        <item>圣文森特 1784 7 S</item>
+        <item>史瓦济兰 268 7 S</item>
+        <item>斯里兰卡 94 7|8 S</item>
+        <item>斯洛伐克 421 7 S</item>
+        <item>斯洛文尼亚 386 7 S</item>
+        <item>苏丹 249 9 S</item>
+        <item>苏里南 597 6 S</item>
+        <item>索罗门群岛 677 7 S</item>
+        <item>索马里 252 7 S</item>
+        <item>塔吉克斯坦 992 6 T</item>
+        <item>台湾 886 10 T</item>
+        <item>泰国 66 10 T</item>
+        <item>坦桑尼亚 255 11 T</item>
+        <item>汤加 676 7 T</item>
+        <item>特里尼达和多巴哥 1868 7 T</item>
+        <item>突尼斯 216 8 T</item>
+        <item>图瓦卢 688 0 T</item>
+        <item>土耳其 90 10 T</item>
+        <item>土库曼斯坦 993 6 T</item>
+        <item>托克劳 690 0 T</item>
+        <item>瓦利斯群岛和富图纳群岛 681 0 W</item>
+        <item>瓦努阿图 678 0 W</item>
+        <item>危地马拉 502 8 W</item>
+        <item>委内瑞拉 58 7 W</item>
+        <item>文莱 673 7 W</item>
+        <item>乌干达 256 9 W</item>
+        <item>乌克兰 380 10 W</item>
+        <item>乌拉圭 598 7 W</item>
+        <item>乌兹别克斯坦 998 7 W</item>
+        <item>西班牙 34 9 X</item>
+        <item>西萨摩亚 685 7 X</item>
+        <item>希腊 30 10 X</item>
+        <item>香港（中国） 852 8 X</item>
+        <item>象牙海岸 225 8 X</item>
+        <item>新加坡 65 8 X</item>
+        <item>新喀里多尼亚 687 0 X</item>
+        <item>新西兰 64 8 X</item>
+        <item>匈牙利 36 9 X</item>
+        <item>叙利亚 963 9 X</item>
+        <item>牙买加 1876 7 Y</item>
+        <item>亚美尼亚 374 8 Y</item>
+        <item>也门 967 6 Y</item>
+        <item>伊拉克 964 8 Y</item>
+        <item>伊朗 98 8 Y</item>
+        <item>以色列 972 9 Y</item>
+        <item>意大利 39 10 Y</item>
+        <item>印度 91 10 Y</item>
+        <item>印尼 62 10|11|12 Y</item>
+        <item>英国 44 10 Y</item>
+        <item>约旦 962 7 Y</item>
+        <item>越南 84 10 Y</item>
+        <item>赞比亚 260 9 Z</item>
+        <item>扎伊尔 243 7 Z</item>
+        <item>乍得 235 7 Z</item>
+        <item>直布罗陀 350 8 Z</item>
+        <item>智利 56 7 Z</item>
+        <item>中非共和国 236 6 Z</item>
+        <item>中国 86 11 Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f002f">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+    <string-array name="APKTOOL_DUPLICATE_array_0x7f0f0038">
+        <item>大图浏览</item>
+        <item>WiFi环境下，大图浏览更赞！</item>
+        <item>开启</item>
+        <item>不再提醒</item>
+    </string-array>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207bb" android:paddingTop="11.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0800fd" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="14.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020798" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f080c9d" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="#ff0a0a0a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="4.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0d0534" android:lineSpacingExtra="2.0dip" android:marqueeRepeatLimit="1" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="11.0dip" android:textColor="#ff636363" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080c9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
+                <TextView android:textSize="11.0dip" android:textColor="#ff636363" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ca0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" />
+                <TextView android:textSize="11.0dip" android:textColor="#ff636363" android:id="@id/APKTOOL_DUPLICATE_id_0x7f080ca1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <com.qzone.widget.CommonLine android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0b01a0" android:layout_marginTop="14.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0800fd" android:layout_alignParentBottom="true" />
+</RelativeLayout>
